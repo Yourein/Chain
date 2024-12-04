@@ -10,3 +10,7 @@ import kotlinx.serialization.Serializable
 
 // ユニットでのトーク画面
 @Serializable data class UnitTalk(val groupId: String)
+
+// デバッグ用画面
+@Serializable
+data object Playground
