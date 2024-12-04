@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import net.yourein.chain.navigation.GroupMembers
+import net.yourein.chain.navigation.IdolProfile
 import net.yourein.chain.navigation.IdolTalk
 import net.yourein.chain.navigation.Playground
 import net.yourein.chain.navigation.Top
@@ -24,6 +26,12 @@ fun ChainNavHost(
 
         }
         composable<UnitTalk> {
+
+        }
+        composable<IdolProfile> {
+
+        }
+        composable<GroupMembers> {
 
         }
         composable<Playground> {
