@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.room.database)
     implementation(libs.room.ktx)
     implementation(libs.kotlinx.serialization.core)
+    implementation(libs.kotlinx.immutable)
+    implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
