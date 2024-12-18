@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import net.yourein.chain.R
 import net.yourein.chain.model.ChatRoomModel
@@ -29,11 +30,18 @@ import net.yourein.chain.ui.theme.ChainTheme
 fun TopScreen(
     viewModel: TopScreenViewModel
 ) {
+    val idolUnreadCount = viewModel.idols.count { it.hasUnread }
+
+    TopScreen(
+        unreadCount = persistentListOf(idolUnreadCount, 0, 0),
+        roomWithIdol = viewModel.idols
+    )
 }
 
 @Composable
 fun TopScreen(
-    unreadCount: List<Int>,
+    unreadCount: ImmutableList<Int>,
+    roomWithIdol: ImmutableList<ChatRoomModel>,
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
     Scaffold(
@@ -67,31 +75,8 @@ fun TopScreen(
 
                 when (selectedTab) {
                     0    -> {
-                        val rooms = persistentListOf(
-                            ChatRoomModel(
-                                chatRoomId = 0,
-                                name = "櫻木真乃",
-                                iconRes = R.drawable.chain_icon_mano,
-                                member = listOf(),
-                                hasUnread = true,
-                            ),
-                            ChatRoomModel(
-                                chatRoomId = 0,
-                                name = "風野灯織",
-                                iconRes = R.drawable.chain_icon_hiori,
-                                member = listOf(),
-                                hasUnread = true,
-                            ),
-                            ChatRoomModel(
-                                chatRoomId = 0,
-                                name = "めぐる",
-                                iconRes = R.drawable.chain_icon_meguru,
-                                member = listOf(),
-                                hasUnread = true,
-                            ),
-                        )
                         RoomList(
-                            rooms = rooms,
+                            rooms = roomWithIdol,
                             onRoomItemClick = {},
                         )
                     }
@@ -118,7 +103,8 @@ fun TopScreen(
 private fun TopScreenPreview() {
     ChainTheme {
         TopScreen(
-            unreadCount = listOf(0, 0, 0)
+            unreadCount = persistentListOf(0, 0, 0),
+            roomWithIdol = persistentListOf(),
         )
     }
 }
@@ -128,7 +114,8 @@ private fun TopScreenPreview() {
 private fun TopScreenPreviewWithUnreads() {
     ChainTheme {
         TopScreen(
-            unreadCount = listOf(12, 6, 0)
+            unreadCount = persistentListOf(12, 6, 0),
+            roomWithIdol = persistentListOf(),
         )
     }
 }
