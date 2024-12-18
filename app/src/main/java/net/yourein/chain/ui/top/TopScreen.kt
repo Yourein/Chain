@@ -18,7 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import kotlinx.collections.immutable.persistentListOf
 import net.yourein.chain.R
+import net.yourein.chain.model.ChatRoomModel
 import net.yourein.chain.ui.common.ChainTitleText
 import net.yourein.chain.ui.common.ChainTopBar
 import net.yourein.chain.ui.theme.ChainTheme
@@ -30,7 +32,7 @@ fun TopScreen(
 }
 
 @Composable
-private fun TopScreen(
+fun TopScreen(
     unreadCount: List<Int>,
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -62,6 +64,50 @@ private fun TopScreen(
                         .size(300.dp)
                         .align(Alignment.TopEnd)
                 )
+
+                when (selectedTab) {
+                    0    -> {
+                        val rooms = persistentListOf(
+                            ChatRoomModel(
+                                chatRoomId = 0,
+                                name = "櫻木真乃",
+                                iconRes = R.drawable.chain_icon_mano,
+                                member = listOf(),
+                                hasUnread = true,
+                            ),
+                            ChatRoomModel(
+                                chatRoomId = 0,
+                                name = "風野灯織",
+                                iconRes = R.drawable.chain_icon_hiori,
+                                member = listOf(),
+                                hasUnread = true,
+                            ),
+                            ChatRoomModel(
+                                chatRoomId = 0,
+                                name = "めぐる",
+                                iconRes = R.drawable.chain_icon_meguru,
+                                member = listOf(),
+                                hasUnread = true,
+                            ),
+                        )
+                        RoomList(
+                            rooms = rooms,
+                            onRoomItemClick = {},
+                        )
+                    }
+
+                    1    -> {
+
+                    }
+
+                    2    -> {
+
+                    }
+
+                    else -> Unit
+                }
+
+
             }
         }
     }
