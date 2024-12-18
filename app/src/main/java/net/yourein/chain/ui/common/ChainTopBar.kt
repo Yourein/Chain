@@ -2,7 +2,11 @@ package net.yourein.chain.ui.common
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
@@ -45,7 +49,10 @@ fun ChainTopBar(
         title = title,
         navigationIcon = navigationIcon,
         actions = actions,
-        colors = ChainTopAppBarColors
+        colors = ChainTopAppBarColors,
+        windowInsets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Top + WindowInsetsSides.Horizontal
+        )
     )
 }
 
