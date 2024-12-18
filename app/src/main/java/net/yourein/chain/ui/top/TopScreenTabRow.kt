@@ -23,13 +23,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import net.yourein.chain.ui.theme.ChainGradiantIndicator
 import net.yourein.chain.ui.theme.ChainSecondary
 import net.yourein.chain.ui.theme.ChainTextPrimary
 import net.yourein.chain.ui.theme.ChainTheme
@@ -124,17 +122,7 @@ private fun TopScreenTabRowUnreadIndicator(
             .width(40.dp)
             .height(20.dp)
             .clip(shape = RoundedCornerShape(16.dp))
-            .background(
-                Brush.linearGradient(
-                    0.4f to Color(0xFFF23971),
-                    0.8f to Color(0xFFF48A83),
-                    start = Offset(0f, 0f),
-                    end = Offset(
-                        Float.POSITIVE_INFINITY,
-                        Float.POSITIVE_INFINITY
-                    )
-                )
-            )
+            .background(ChainGradiantIndicator)
     ) {
         Text(
             text = "$unreadCount",

@@ -17,9 +17,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawWithCache
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
@@ -31,6 +28,7 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import net.yourein.chain.R
 import net.yourein.chain.model.ChatRoomModel
+import net.yourein.chain.ui.theme.ChainGradiantIndicator
 import net.yourein.chain.ui.theme.ChainTextPrimary
 import net.yourein.chain.ui.theme.ChainTheme
 import net.yourein.chain.ui.theme.ChainWhite
@@ -95,15 +93,7 @@ fun RoomItem(
                             radius = backRadius
                         )
                         drawCircle(
-                            brush = Brush.linearGradient(
-                                0.4f to Color(0xFFF23971),
-                                0.8f to Color(0xFFF48A83),
-                                start = Offset(0f, 0f),
-                                end = Offset(
-                                    Float.POSITIVE_INFINITY,
-                                    Float.POSITIVE_INFINITY
-                                )
-                            ),
+                            brush = ChainGradiantIndicator,
                             radius = radius
                         )
                     }
