@@ -76,4 +76,36 @@ class TopScreenViewModel : ViewModel() {
             iconRes = R.drawable.chain_icon_haruki
         ),
     )
+
+    val units = persistentListOf(
+        mockRoom.copy(
+            name = "イルミネーションスターズ",
+            iconRes = R.drawable.chain_icon_illuminationstars
+        ),
+        mockRoom.copy(
+            name = "アンティーカ",
+            iconRes = R.drawable.chain_icon_lantica
+        ),
+        mockRoom.copy(
+            name = "放課後クライマックスガールズ",
+            iconRes = R.drawable.chain_icon_hokagoclimaxgirls
+        ),
+        mockRoom.copy(
+            name = "アルストロメリア",
+            iconRes = R.drawable.chain_icon_alstroemeria
+        ),
+        mockRoom.copy(
+            name = "ストレイライト",
+            iconRes = R.drawable.chain_icon_straylight
+        ),
+        mockRoom.copy(
+            name = "ノクチル",
+            iconRes = R.drawable.chain_icon_noctchill
+        ),
+        mockRoom.copy(name = "シーズ", iconRes = R.drawable.chain_icon_shhis),
+        mockRoom.copy(
+            name = "コメティック",
+            iconRes = R.drawable.chain_icon_cometik
+        ),
+    )
 }

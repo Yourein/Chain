@@ -34,11 +34,15 @@ import net.yourein.chain.ui.theme.ChainTheme
 fun TopScreen(
     viewModel: TopScreenViewModel
 ) {
-    val idolUnreadCount = viewModel.idols.count { it.hasUnread }
+    val idolUnreadCount =
+        remember(viewModel.idols) { viewModel.idols.count { it.hasUnread } }
+    val unitUnreadCount =
+        remember(viewModel.units) { viewModel.units.count { it.hasUnread } }
 
     TopScreen(
-        unreadCount = persistentListOf(idolUnreadCount, 0, 0),
-        roomWithIdol = viewModel.idols
+        unreadCount = persistentListOf(idolUnreadCount, unitUnreadCount, 0),
+        roomWithIdol = viewModel.idols,
+        roomWithUnit = viewModel.units,
     )
 }
 
@@ -46,6 +50,7 @@ fun TopScreen(
 fun TopScreen(
     unreadCount: ImmutableList<Int>,
     roomWithIdol: ImmutableList<ChatRoomModel>,
+    roomWithUnit: ImmutableList<ChatRoomModel>,
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
     Scaffold(
@@ -90,7 +95,10 @@ fun TopScreen(
                     }
 
                     1    -> {
-
+                        RoomList(
+                            rooms = roomWithUnit,
+                            onRoomItemClick = {},
+                        )
                     }
 
                     2    -> {
@@ -113,6 +121,7 @@ private fun TopScreenPreview() {
         TopScreen(
             unreadCount = persistentListOf(0, 0, 0),
             roomWithIdol = persistentListOf(),
+            roomWithUnit = persistentListOf(),
         )
     }
 }
@@ -124,6 +133,7 @@ private fun TopScreenPreviewWithUnreads() {
         TopScreen(
             unreadCount = persistentListOf(12, 6, 0),
             roomWithIdol = persistentListOf(),
+            roomWithUnit = persistentListOf(),
         )
     }
 }
